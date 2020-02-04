@@ -56,7 +56,7 @@ function scoreGen(){
   let worked = score/60;
   scoreText.html("You've worked " + worked.toFixed(2) + " hours since your last break!");
   playButton.mousePressed(scoreIncrease);
-  if(millis() - startTime > 300000){
+  if(millis() - startTime > 5000){
     endGame = true;
   }
   if(meals > 2){
