@@ -21,8 +21,7 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene physics>
-
+    <a-scene>
       <a-assets>
         <img id="skyTexture" src="images/starmap.jpg">
         <img id="io" src="images/io.jpg">
@@ -34,6 +33,9 @@
       <a-asset-item id="tree-obj" src="models/tree-05.obj"></a-asset-item>
       <a-asset-item id="moon-obj" src="models/MOON.OBJ"></a-asset-item>
       </a-assets>
+
+      <a-entity id="cameraRig" wasd-controls movement-controls>
+      </a-entity>
 
       <a-entity environment="preset: dream"></a-entity>
 
