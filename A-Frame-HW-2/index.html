@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- main a-frame library -->
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+
+    <!-- physics library -->
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+
+    <!-- particle system library -->
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+
+    <!-- environment library -->
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+
+    <!-- text geometry library -->
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+
+    <!-- extras library -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene physics>
+
+      <a-assets>
+        <img id="skyTexture" src="images/starmap.jpg">
+        <img id="io" src="images/io.jpg">
+        <audio src="images/quiet_bg.mp3" autoplay preload></audio>
+      <a-asset-item id="fish-mtl" src="models/fish.mtl"></a-asset-item>
+      <a-asset-item id="fish-obj" src="models/fish.obj"></a-asset-item>
+
+      <a-asset-item id="tree-mtl" src="models/tree-05.mtl"></a-asset-item>
+      <a-asset-item id="tree-obj" src="models/tree-05.obj"></a-asset-item>
+      <a-asset-item id="moon-obj" src="models/MOON.OBJ"></a-asset-item>
+      </a-assets>
+
+      <a-entity environment="preset: dream"></a-entity>
+
+      <!-- <a-entity static-body geometry="primitive: sphere" radius="1;" position="0 1.35 -4" material="src: #io"
+              animation="property: rotation; to: 0 360 0; dur: 15000; easing: linear; loop: true;" >
+            </a-entity>
+      <a-entity static-body geometry="primitive: plane" scale="9 9 2" material="color: #2c9571" rotation="-90 0 0" position="0 -0.03 -6.4"></a-entity> -->
+
+      <!-- <a-entity geometry="primitive: cylinder" scale = "0.5 1 0.5" position = "2 1.4 -3"
+      material="color: pink"
+      animation="property:position; to: 0 1.5 -3; dur: 15000; easing: linear; loop: true;">
+      </a-entity> -->
+
+      <!-- <a-entity dynamic-body geometry="primitive: box;" position="-.6 5 -3;" ></a-entity> -->
+
+      <a-entity obj-model="mtl: models/fish.mtl; obj: models/fish.obj"
+      position="-9.22937 1.96712 -19.40855" rotation="0 30 0"
+      scale="0.025 0.025 0.025"></a-entity>
+
+      <a-entity obj-model="mtl: #tree-mtl; obj: #tree-obj"
+      position="-12 0.8 -19.40855" rotation="0 30 0"
+      scale="0.025 0.025 0.025"></a-entity>
+
+      <a-entity obj-model="mtl: #tree-mtl; obj: #tree-obj"
+      position="-6 0.8 -19.40855" rotation="0 30 0"
+      scale="0.025 0.025 0.025"></a-entity>
+
+      <a-entity obj-model="obj: models/MOON.OBJ" position="27.37938 9.6037 -37.78919" rotation="0 200 0" scale=""></a-entity>
+
+      <!-- this one is higher quality -->
+      <!-- <a-entity id="tower" gltf-model="#tower-gltf"
+      position="0 0 0" rotation="0 0 0" scale="1 1 1"></a-entity> -->
+
+      <!-- <a-sky src="#skyTexture"></a-sky> -->
+      <a-text value="Someone wants to talk to you..." color="#111" position="1.035 2.49656 -4" align="center" text=""></a-text>
+
+      <a-sound src="images/ringing.wav" autoplay="true"
+          position="-9 2 -20" loop = "true"></a-sound>
+      <a-text value="You've been here a while.. better wake up before you forget how to..." color="#111" position="-10 3.09555 -20" align="center" text=""></a-text>
+      <!-- 360 video sphere  -->
+      <!-- <a-videosphere src="#city"></a-videosphere>   -->
+
+    </a-scene>
+  </body>
+</html>
