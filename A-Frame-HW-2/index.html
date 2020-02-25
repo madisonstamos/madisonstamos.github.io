@@ -19,6 +19,10 @@
 
     <!-- extras library -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+
+    <!-- teleport -->
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+
   </head>
   <body>
     <a-scene>
@@ -34,10 +38,10 @@
       <a-asset-item id="moon-obj" src="models/MOON.OBJ"></a-asset-item>
       </a-assets>
 
-      <a-entity id="cameraRig" wasd-controls movement-controls>
-
-              <a-entity camera look-controls position="0 1.7 0"></a-entity>
-
+      <a-entity id="cameraRig" wasd-controls movement-controls position = "0 1 0">
+        <a-entity id="head" camera wasd-controls look-controls></a-entity>
+        <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+      <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
       </a-entity>
 
       <a-entity environment="preset: dream"></a-entity>
@@ -59,12 +63,10 @@
       scale="0.025 0.025 0.025"></a-entity>
 
       <a-entity obj-model="mtl: #tree-mtl; obj: #tree-obj"
-      position="-12 0.8 -19.40855" rotation="0 30 0"
+      position="-12 0.4 -19.40855" rotation="0 30 0"
       scale="0.025 0.025 0.025"></a-entity>
 
-      <a-entity obj-model="mtl: #tree-mtl; obj: #tree-obj"
-      position="-6 0.8 -19.40855" rotation="0 30 0"
-      scale="0.025 0.025 0.025"></a-entity>
+      <a-entity obj-model="mtl: models/tree-05.mtl; obj: models/tree-05.obj" position="-6 0.4 -19.40855" rotation="0 29.999999999999996 0" scale="0.025 0.025 0.025"></a-entity>
 
       <a-entity obj-model="obj: models/MOON.OBJ" position="27.37938 9.6037 -37.78919" rotation="0 200 0" scale=""></a-entity>
 
@@ -80,6 +82,13 @@
       <a-text value="You've been here a while.. better wake up before you forget how to..." color="#111" position="-10 3.09555 -20" align="center" text=""></a-text>
       <!-- 360 video sphere  -->
       <!-- <a-videosphere src="#city"></a-videosphere>   -->
+
+      <a-entity id="cameraRig">
+      <a-entity id="head" camera="active: true" look-controls wasd-controls position="0 1.6 0"></a-entity>
+      <a-entity vive-controls="hand: left" teleport-controls="button: trigger; cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+      <a-entity vive-controls="hand: right" teleport-controls="button: trigger; cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+
+    </a-entity>
 
     </a-scene>
   </body>
