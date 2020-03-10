@@ -32,11 +32,8 @@ let profOH = false;
 let smile;
 
 // face tracking
-
 var capture;
 var tracker;
-
-//let modelURL = "https://teachablemachine.withgoogle.com/models/AasLA0qM/"; // NEED TO CHANGE
 let label = "...waiting";
 
 function preload(){
@@ -110,34 +107,34 @@ function scoreGen(){
     scoreText.html("You've worked " + worked.toFixed(2) + " hours since your last break!");
   }
 
-  if(score.toFixed(2) > 5){ // change to WORKED
+  if(worled.toFixed(2) > 5){
     if (first_time == false){
       first_time = true;
       popup = true;
     }
-  } else if (score.toFixed(2) <= 5){ // change to WORKED
+  } else if (worked.toFixed(2) <= 5){
       if(first_time){
         popup = false;
       }
   }
 
-  if(score.toFixed(2) > 2){ // change to WORKED
+  if(worked.toFixed(2) > 2){
     if (first_notif == false){
       first_notif = true;
       notification = true;
     }
-  } else if (score.toFixed(2) <= 2){ // change to WORKED
+  } else if (worked.toFixed(2) <= 2){
       if(first_notif){
         notification = false;
       }
   }
 
-  if(timer/180 < 6){ // change to WORKED
+  if(worked/180 < 6){
     if (profOH == false){
       profOH = true;
       prof_notif = true;
     }
-  } else if (timer/180 < 5){ // change to WORKED
+  } else if (worked/180 < 5){
       if(profOH){
         prof_notif = false;
       }
@@ -177,8 +174,8 @@ function scoreIncrease(){
 }
 
 function meal(){
-  if(score >= 3){ //CHANGE BACK to if(score/60 >= 3){
-    score -= 3; // change back to score -= 180;
+  if(score/60 >= 3){
+    score -= 180;
     meals ++;
   }
 }
@@ -191,8 +188,8 @@ function play(){
 }
 
 function socialize(){
-  if(score >= 2){ //CHANGE BACK to if(score/60 >= 2){
-    score -= 2; //CHANGE BACK to score -= 120;
+  if(score/60 >= 2){
+    score -= 120;
     social++;
   }
 }
@@ -250,15 +247,9 @@ function winScreen() {
 function pauseScreen() {
   background(125, 94, 99);
   textSize(16);
-  text("Smile!", windowWidth/2, windowHeight/2 - 100);
+  text("Why aren't you smiling?", windowWidth/2, windowHeight/2 - 100);
+  text("Maybe you should make an appointment with student health if you're so depressed", windowWidth/2, windowHeight/2 - 85);
   textSize(12);
-  var positions = tracker.getCurrentPosition();
-  var mouthLeft = createVector(positions[44][0], positions[44][1]);
-  var mouthRight = createVector(positions[50][0], positions[50][1]);
-  var smile = mouthLeft.dist(mouthRight);
-  if(smile >= 200){
-    pause = false;
-  }
   nameText.hide();
   scoreText.hide();
   playButton.hide();
@@ -342,24 +333,25 @@ function draw(){
     }
 
     // smile
-   var positions = tracker.getCurrentPosition();
-   if (positions.length > 0) {
-     if (frameCount % 60 == 0 && timer > 0){
-        var mouthLeft = createVector(positions[44][0], positions[44][1]);
-        var mouthRight = createVector(positions[50][0], positions[50][1]);
-        var smile = mouthLeft.dist(mouthRight);
-        if(smile < 200){
-          background(125, 94, 99);
-          textSize(16);
-          text("Smile!", windowWidth/2, windowHeight/2 - 100);
-          textSize(12);
-          nameText.hide();
-          scoreText.hide();
-          playButton.hide();
-        }
-      }
-    }
-  }
+    var positions = tracker.getCurrentPosition();
+    if (positions.length > 0) {
+      if (frameCount % 60 == 0 && timer > 0){
+         var mouthLeft = createVector(positions[44][0], positions[44][1]);
+         var mouthRight = createVector(positions[50][0], positions[50][1]);
+         var smile = mouthLeft.dist(mouthRight);
+         if(smile < 100){
+           pause = true;
+         }
+         if(smile > 100){
+           pause = false;
+           nameText.show();
+           scoreText.show();
+           playButton.show();
+
+         }
+       }
+     }
+   }
 
   if(pause){
     pauseScreen();
@@ -370,5 +362,4 @@ function draw(){
   } else if (winGame) {
     winScreen();
   }
-
 }
