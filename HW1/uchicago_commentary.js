@@ -43,7 +43,7 @@ function preload(){
   phone = loadImage("images2/phone1.png");
   speech = loadImage("images2/speech.png");
   ringtone = loadSound("images2/ringtone.mp3");
-  consol = loadFont("images2/Consolas.ttf");
+  consol = loadFont("images2/consolas.ttf");
   rules = loadImage("images2/rules.png");
   phone2 = loadImage("images2/phone2.png");
   notifs = loadImage("images2/notifications.png");
