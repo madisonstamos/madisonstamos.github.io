@@ -1,6 +1,12 @@
+@font-face {
+  font-family: consol;
+  src: url(images2/consolas.ttf);
+}
+
 html, body {
   margin: 0;
   padding: 0;
+  font-family: consol;
 }
 canvas {
   display: block;
@@ -18,8 +24,13 @@ Input{
 }
 
 button{
-  text-align: center
+  text-align: center;
+  font-family: consol;
   position: relative;
              display: block;
              margin : 0 auto;
+
+}
+input[type=button] {
+  font-family: consol;
 }
