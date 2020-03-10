@@ -107,7 +107,7 @@ function scoreGen(){
     scoreText.html("You've worked " + worked.toFixed(2) + " hours since your last break!");
   }
 
-  if(worled.toFixed(2) > 5){
+  if(worked.toFixed(2) > 5){
     if (first_time == false){
       first_time = true;
       popup = true;
@@ -129,12 +129,12 @@ function scoreGen(){
       }
   }
 
-  if(worked/180 < 6){
+  if(timer/180 < 6){
     if (profOH == false){
       profOH = true;
       prof_notif = true;
     }
-  } else if (worked/180 < 5){
+  } else if (timer/180 < 5){
       if(profOH){
         prof_notif = false;
       }
@@ -269,9 +269,9 @@ function draw(){
 
     // handles timer
     if(time_left.toFixed(2) == 1){
-      text(time_left.toFixed(2) + " hour left today", width/2, height/3 - 100);
+      text(time_left.toFixed(2) + " hour left today", windowWidth/2, windowHeight/3 - 100);
     } else{
-      text(time_left.toFixed(2) + " hours left today", width/2, height/3 - 100);
+      text(time_left.toFixed(2) + " hours left today", windowWidth/2, windowHeight/3 - 100);
     }
 
     // play games or eat food
@@ -339,10 +339,10 @@ function draw(){
          var mouthLeft = createVector(positions[44][0], positions[44][1]);
          var mouthRight = createVector(positions[50][0], positions[50][1]);
          var smile = mouthLeft.dist(mouthRight);
-         if(smile < 100){
+         if(smile < 115){
            pause = true;
          }
-         if(smile > 100){
+         if(smile > 115){
            pause = false;
            nameText.show();
            scoreText.show();
