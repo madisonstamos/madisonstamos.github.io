@@ -129,7 +129,7 @@ function scoreGen(){
       }
   }
 
-  if(timer/180 < 6){
+  if(timer/180 < 7){
     if (profOH == false){
       profOH = true;
       prof_notif = true;
@@ -298,7 +298,7 @@ function draw(){
       }
 
     /// timer decrementation
-    if (frameCount % 60 == 0 && timer > 0) {
+    if (frameCount % 10 == 0 && timer > 0) {
       timer --;
     }
 
